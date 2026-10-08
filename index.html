@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ARPEVER Studios</title>
+<meta name="description" content="ARPEVER Studios makes mobile games. LoomSpire: Sky Tower Jump.">
+<style>
+  :root { --ink: #0E0E10; --paper: #F2F0EB; --accent: #3A3DFF; --dim: #a9a6a0; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: flex; flex-direction: column; background: var(--ink); color: var(--paper);
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  main { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px 16px; text-align: center; }
+  svg { width: 120px; height: 120px; }
+  h1 { font-size: 34px; letter-spacing: 0.12em; margin: 28px 0 0; }
+  h1 span { display: block; font-size: 14px; letter-spacing: 0.6em; color: var(--dim); margin-top: 6px; font-weight: 600; }
+  .games { margin-top: 48px; }
+  .game { display: inline-block; border: 1px solid #2a2a2e; border-radius: 12px; padding: 14px 22px; }
+  .game strong { display: block; font-size: 20px; }
+  .game small { color: var(--dim); }
+  footer { padding: 24px 16px; text-align: center; color: var(--dim); font-size: 14px; }
+  a { color: #8a8cff; }
+</style>
+</head>
+<body>
+<main>
+  <!-- ARPEVER işareti: üçgen (A), yarım daire (R/P), üç çubuk (E), ters üçgen (V) -->
+  <svg viewBox="0 0 100 100" role="img" aria-label="ARPEVER Studios">
+    <polygon points="0,46 23,0 46,46" fill="#F2F0EB"/>
+    <path d="M54,0 H77 A23,23 0 0 1 77,46 H54 Z" fill="#3A3DFF"/>
+    <rect x="0" y="54" width="46" height="10" fill="#F2F0EB"/>
+    <rect x="0" y="72" width="46" height="10" fill="#F2F0EB"/>
+    <rect x="0" y="90" width="46" height="10" fill="#F2F0EB"/>
+    <polygon points="54,54 100,54 77,100" fill="#F2F0EB"/>
+  </svg>
+  <h1>ARPEVER<span>STUDIOS</span></h1>
+  <div class="games">
+    <div class="game"><strong>LoomSpire</strong><small>Sky Tower Jump · Android &amp; iOS</small></div>
+  </div>
+</main>
+<footer>
+  <a href="mailto:support@arpever.com">support@arpever.com</a> · <a href="/privacy/">Privacy Policy / Gizlilik Politikası</a>
+</footer>
+</body>
+</html>
