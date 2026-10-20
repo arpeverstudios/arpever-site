@@ -7,9 +7,10 @@
   - Oyun görselleri: img/ klasörüne aşağıdaki adlarla PNG konursa kartta otomatik görünür,
     dosya yoksa koddan çizilen yer tutucu kalır:
       img/loomspire-icon.png (kare ikon, 512×512)   img/loomspire-shot.png (dikey ekran görüntüsü, 1080×1920)
-      img/toppleton-icon.png                        img/pipaloo-icon.png
+      img/toppleton-icon.png                        img/toppleton-shot.png (dikey ekran görüntüsü)
+      img/pipaloo-icon.png
   - Yeni oyun: "games" bölümüne bir kart kopyalayın; durumu .status ile yazın.
-  - Stüdyo bölümündeki sayılar (1 oyun testte / 2 oyun yolda) oyun durumları değişince elle güncellenir.
+  - Stüdyo bölümündeki sayılar (2 oyun testte / 1 oyun yolda) oyun durumları değişince elle güncellenir.
   - Metinler oyun kartlarıyla (claude/oyunlar/*.md) ve gizlilik politikasıyla çelişmemeli.
 -->
 <html lang="en" data-lang="en">
@@ -17,7 +18,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ARPEVER Studios</title>
-<meta name="description" content="ARPEVER Studios is an independent mobile game studio from Türkiye. LoomSpire is in closed testing on Google Play; Toppleton and Pipaloo are coming soon.">
+<meta name="description" content="ARPEVER Studios is an independent mobile game studio from Türkiye. LoomSpire and Toppleton are in closed testing on Google Play; Pipaloo is coming soon.">
 <meta name="theme-color" content="#0E0E10">
 <meta property="og:title" content="ARPEVER Studios">
 <meta property="og:description" content="Independent mobile games from Türkiye. No accounts, ads that don't get in the way, and full offline play.">
@@ -191,6 +192,17 @@
   .float { animation: bob 3.2s ease-in-out infinite; }
   @keyframes bob { 50% { transform: translateY(-7px); } }
 
+  /* Toppleton: ters yerleşim + yer tutucu çizim (img/toppleton-shot.png konunca onun altında kalır) */
+  .feature.tp { margin-top: 24px; background: linear-gradient(200deg, #2a1915 0%, var(--ink-2) 55%); }
+  @media (min-width: 880px) { .feature.flip { grid-template-columns: .95fr 1.05fr; } .feature.flip .feature-art { order: -1; } }
+  .tp .phone { transform: rotate(3deg); box-shadow: 0 30px 80px rgba(60, 20, 10, .55); }
+  .tp-shot { background: linear-gradient(180deg, #F7F0E6 0%, #EFE3D2 100%); }
+  .tp-b { position: absolute; height: 6%; border-radius: 3px; }
+  .tp-drop { animation: bob 3.2s ease-in-out infinite reverse; }
+  .tp-score { position: absolute; top: 18px; left: 0; right: 0; text-align: center; font-weight: 700; font-size: 26px; color: #2B2A33; }
+  .tp-best { position: absolute; left: 8%; right: 8%; bottom: 66%; border-top: 2px dashed rgba(43,42,51,.45); padding-top: 4px; font-size: 10px; font-weight: 700; letter-spacing: .12em; color: #8a5a48; text-align: right; }
+  /* Yakında: tek kart kalınca tam genişlik */
+  .soon.one { grid-template-columns: 1fr; }
   /* ---------- yakında ---------- */
   .soon-head { margin-top: 72px; display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
   .soon-head h3 { margin: 0; font-size: 22px; }
@@ -305,8 +317,8 @@
       <p class="eyebrow"><span class="en">Games</span><span class="tr">Oyunlar</span></p>
       <h2 class="reveal"><span class="en">What we're making</span><span class="tr">Neler yapıyoruz</span></h2>
       <p class="lead reveal">
-        <span class="en">One game is in closed testing on Google Play, and two more are on the way.</span>
-        <span class="tr">Bir oyunumuz Google Play'de kapalı testte, iki oyun daha yolda.</span>
+        <span class="en">Two of our games are in closed testing on Google Play, and one more is on the way.</span>
+        <span class="tr">İki oyunumuz Google Play'de kapalı testte, bir oyun daha yolda.</span>
       </p>
 
       <!-- LoomSpire -->
@@ -361,13 +373,9 @@
         </div>
       </article>
 
-      <!-- Yakında -->
-      <div class="soon-head reveal">
-        <h3><span class="en">Coming soon</span><span class="tr">Yakında</span></h3>
-      </div>
-      <div class="soon">
-        <article class="card reveal" id="toppleton">
-          <div class="bg" style="background:radial-gradient(120% 90% at 100% 0%,rgba(255,122,92,.26),transparent 60%)"></div>
+      <!-- Toppleton -->
+      <article class="feature flip tp reveal" id="toppleton">
+        <div class="feature-body">
           <div class="game-head">
             <div class="icon">
               <div style="position:absolute;inset:0;background:#F4EBDD"></div>
@@ -380,12 +388,49 @@
               <p><span class="en">One more block.</span><span class="tr">Bir blok daha.</span></p>
             </div>
           </div>
-          <p class="note">
-            <span class="en">Drop each block with a single tap and build your tower as high as it will go. Five modes, from relaxed Zen to a fresh Daily challenge, and your best height marked right on the tower.</span>
-            <span class="tr">Tek dokunuşla blokları bırak, kuleni gidebildiği kadar yükselt. Sakin Zen'den her gün yenilenen Günlük moda kadar 5 mod var; önceki rekorun da kulenin üstünde çizgiyle durur.</span>
+          <span class="status live"><span class="en">Closed testing on Google Play</span><span class="tr">Google Play'de kapalı testte</span></span>
+          <p class="desc">
+            <span class="en">Drop each block with a single tap and build your tower as high as it will go. Your best height waits on the tower as a dashed line, so you always know what to beat.</span>
+            <span class="tr">Tek dokunuşla blokları bırak, kuleni gidebildiği kadar yükselt. Önceki rekorun kulenin üstünde kesikli bir çizgiyle durur; neyi geçmen gerektiğini hep bilirsin.</span>
           </p>
-          <span class="tag"><span class="en">Coming soon</span><span class="tr">Yakında</span></span>
-        </article>
+          <ul class="chips">
+            <li><span class="en">One-tap stacking</span><span class="tr">Tek dokunuş</span></li>
+            <li><span class="en">5 modes</span><span class="tr">5 mod</span></li>
+            <li><span class="en">Daily mode</span><span class="tr">Günlük mod</span></li>
+            <li><span class="en">Share your score card</span><span class="tr">Skor kartını paylaş</span></li>
+            <li><span class="en">Plays offline</span><span class="tr">İnternetsiz oynanır</span></li>
+          </ul>
+          <ol class="timeline" aria-label="Release">
+            <li class="done"><span><b><span class="en">20 Oct 2026</span><span class="tr">20 Ekim 2026</span></b> · <span class="en">Closed testing started on Google Play</span><span class="tr">Google Play'de kapalı test başladı</span></span></li>
+            <li class="next"><span><b><span class="en">Nov 2026</span><span class="tr">Kasım 2026</span></b> · <span class="en">Move to public release</span><span class="tr">Herkese açık yayına geçiş</span></span></li>
+            <li><span><span class="en">App Store to follow</span><span class="tr">Ardından App Store</span></span></li>
+          </ol>
+          <p class="platforms">English · Türkçe</p>
+        </div>
+        <div class="feature-art">
+          <div class="phone float">
+            <div class="shot tp-shot">
+              <div class="tp-score">24</div>
+              <div class="tp-best"><span class="en">★ BEST 35</span><span class="tr">★ REKOR 35</span></div>
+              <div class="tp-b" style="left:24%;width:52%;bottom:6%;background:#2B2A33"></div>
+              <div class="tp-b" style="left:24%;width:52%;bottom:12%;background:#FF7A5C"></div>
+              <div class="tp-b" style="left:27%;width:49%;bottom:18%;background:#2B2A33"></div>
+              <div class="tp-b" style="left:27%;width:46%;bottom:24%;background:#FF7A5C"></div>
+              <div class="tp-b" style="left:30%;width:43%;bottom:30%;background:#2B2A33"></div>
+              <div class="tp-b" style="left:30%;width:40%;bottom:36%;background:#FF7A5C"></div>
+              <div class="tp-b" style="left:33%;width:37%;bottom:42%;background:#2B2A33"></div>
+              <div class="tp-b tp-drop" style="left:46%;width:37%;bottom:56%;background:#FF7A5C"></div>
+              <img src="img/toppleton-shot.png" alt="Toppleton" onerror="this.remove()">
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Yakında -->
+      <div class="soon-head reveal">
+        <h3><span class="en">Coming soon</span><span class="tr">Yakında</span></h3>
+      </div>
+      <div class="soon one">
 
         <article class="card reveal" id="pipaloo">
           <div class="bg" style="background:radial-gradient(120% 90% at 100% 0%,rgba(255,170,110,.24),transparent 60%)"></div>
@@ -426,8 +471,8 @@
           <span class="tr">Her oyun telefonunuzun dilinde, Türkçe ya da İngilizce açılır ve aynı birkaç kurala uyar.</span>
         </p>
         <div class="meta-row reveal">
-          <div><b>1</b><span class="en">game in testing</span><span class="tr">oyun testte</span></div>
-          <div><b>2</b><span class="en">games on the way</span><span class="tr">oyun yolda</span></div>
+          <div><b>2</b><span class="en">games in testing</span><span class="tr">oyun testte</span></div>
+          <div><b>1</b><span class="en">game on the way</span><span class="tr">oyun yolda</span></div>
           <div><b>EN · TR</b><span class="en">in every game</span><span class="tr">her oyunda</span></div>
         </div>
       </div>
