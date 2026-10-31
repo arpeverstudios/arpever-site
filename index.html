@@ -8,9 +8,10 @@
     dosya yoksa koddan çizilen yer tutucu kalır:
       img/loomspire-icon.png (kare ikon, 512×512)   img/loomspire-shot.png (dikey ekran görüntüsü, 1080×1920)
       img/toppleton-icon.png                        img/toppleton-shot.png (dikey ekran görüntüsü)
+      img/voltrift-icon.png                         img/voltrift-shot.png (YATAY ekran görüntüsü, 1920×1080)
       img/pipaloo-icon.png
   - Yeni oyun: "games" bölümüne bir kart kopyalayın; durumu .status ile yazın.
-  - Stüdyo bölümündeki sayılar (2 oyun testte / 1 oyun yolda) oyun durumları değişince elle güncellenir.
+  - Stüdyo bölümündeki sayılar (1 yayında / 1 testte / 2 yolda) oyun durumları değişince elle güncellenir.
   - Metinler oyun kartlarıyla (claude/oyunlar/*.md) ve gizlilik politikasıyla çelişmemeli.
 -->
 <html lang="en" data-lang="en">
@@ -18,7 +19,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ARPEVER Studios</title>
-<meta name="description" content="ARPEVER Studios is an independent mobile game studio from Türkiye. LoomSpire and Toppleton are in closed testing on Google Play; Pipaloo is coming soon.">
+<meta name="description" content="ARPEVER Studios is an independent mobile game studio from Türkiye. LoomSpire is out now on Google Play, Toppleton is finishing closed testing, and Voltrift and Pipaloo are on the way.">
 <meta name="theme-color" content="#0E0E10">
 <meta property="og:title" content="ARPEVER Studios">
 <meta property="og:description" content="Independent mobile games from Türkiye. No accounts, ads that don't get in the way, and full offline play.">
@@ -192,6 +193,31 @@
   .float { animation: bob 3.2s ease-in-out infinite; }
   @keyframes bob { 50% { transform: translateY(-7px); } }
 
+  /* Yayında etiketi + mağaza düğmesi */
+  .status.out { background: rgba(52, 199, 120, .16); color: #B7F0CF; }
+  .status.out::before { background: #34C778; box-shadow: 0 0 0 4px rgba(52,199,120,.25); }
+  .store { display: inline-flex; align-items: center; gap: 10px; margin-top: 24px; padding: 11px 18px; border-radius: 12px;
+    background: var(--paper); color: var(--ink); text-decoration: none; font-weight: 600; font-size: 15px; transition: transform .15s; }
+  .store:hover { transform: translateY(-1px); }
+  .store svg { width: 20px; height: 20px; flex: none; }
+  .status.dev { background: rgba(255, 90, 31, .14); color: #FFC7B0; }
+  .status.dev::before { background: #FF5A1F; box-shadow: 0 0 0 4px rgba(255,90,31,.22); }
+  /* Voltrift: yatay telefon + kodla çizilmiş arena (img/voltrift-shot.png konunca onun altında kalır) */
+  .feature.vr { margin-top: 20px; background: linear-gradient(160deg, #0f1a26 0%, var(--ink-2) 55%); }
+  .vr .feature-art { min-height: 300px; }
+  .phone.land { width: min(100%, 380px); aspect-ratio: 18.5 / 9; transform: rotate(-2deg); box-shadow: 0 30px 80px rgba(10, 30, 50, .6); }
+  .vr-shot { background: #bfbcb5; display: grid; grid-template-columns: repeat(15, 1fr); grid-template-rows: repeat(7, 1fr); }
+  .vr-shot i { display: block; }
+  .vr-shot .f { background: #c9c6bf; box-shadow: inset 0 0 0 .5px rgba(0,0,0,.06); }
+  .vr-shot .w { background: #3a3d45; box-shadow: inset 0 -3px 0 rgba(0,0,0,.25); }
+  .vr-shot .c { background: #b9895a; box-shadow: inset 0 0 0 2px #9a6f45; border-radius: 2px; }
+  .vr-shot .b { background: #c9c6bf radial-gradient(circle, #fff6c8 0 18%, #ffb13d 36%, rgba(255,90,31,.55) 62%, transparent 72%); }
+  .vr-shot .p { background: #c9c6bf radial-gradient(circle, #e8f4f8 0 26%, #38e1d0 34%, rgba(56,225,208,.35) 52%, transparent 62%); }
+  .vr-shot .e { background: #c9c6bf radial-gradient(ellipse 34% 28% at 50% 54%, #7bd23a 0 90%, transparent 100%); }
+  .vr-shot .k { background: #c9c6bf radial-gradient(circle, #ff5a1f 0 24%, rgba(255,90,31,.25) 36%, transparent 46%); }
+  .vr-hud { position: absolute; top: 6px; left: 8px; right: 8px; display: flex; justify-content: space-between; pointer-events: none; }
+  .vr-hud span { background: rgba(20,22,28,.72); color: #fff; font-size: 9px; font-weight: 700; letter-spacing: .08em; padding: 3px 7px; border-radius: 5px; }
+  .vr-hud .x { color: #38e1d0; }
   /* Toppleton: ters yerleşim + yer tutucu çizim (img/toppleton-shot.png konunca onun altında kalır) */
   .feature.tp { margin-top: 24px; background: linear-gradient(200deg, #2a1915 0%, var(--ink-2) 55%); }
   @media (min-width: 880px) { .feature.flip { grid-template-columns: .95fr 1.05fr; } .feature.flip .feature-art { order: -1; } }
@@ -317,8 +343,8 @@
       <p class="eyebrow"><span class="en">Games</span><span class="tr">Oyunlar</span></p>
       <h2 class="reveal"><span class="en">What we're making</span><span class="tr">Neler yapıyoruz</span></h2>
       <p class="lead reveal">
-        <span class="en">Two of our games are in closed testing on Google Play, and one more is on the way.</span>
-        <span class="tr">İki oyunumuz Google Play'de kapalı testte, bir oyun daha yolda.</span>
+        <span class="en">LoomSpire is out now on Google Play and Toppleton is in the last days of closed testing. Two more games are on the way.</span>
+        <span class="tr">LoomSpire Google Play'de yayında, Toppleton kapalı testin son günlerinde. İki oyun daha yolda.</span>
       </p>
 
       <!-- LoomSpire -->
@@ -336,7 +362,7 @@
               <p>Sky Tower Jump</p>
             </div>
           </div>
-          <span class="status live"><span class="en">Closed testing on Google Play</span><span class="tr">Google Play'de kapalı testte</span></span>
+          <span class="status out"><span class="en">Out now on Google Play</span><span class="tr">Google Play'de yayında</span></span>
           <p class="desc">
             <span class="en">Climb an endless tower, floor by floor. Tilt your phone to steer and tap to jump. Land clean jumps to build your Flow, grab power-up bubbles and steer clear of the cursed ones. A minute to learn, much longer to master.</span>
             <span class="tr">Bitmeyen bir kulede kat kat yukarı tırman. Telefonu eğerek yön ver, dokunarak zıpla. Temiz inişlerle Akış'ını doldur, güç baloncuklarını topla, ceza baloncuklarından uzak dur. Öğrenmesi bir dakika, ustalaşması çok daha uzun.</span>
@@ -348,9 +374,10 @@
             <li><span class="en">Power-ups &amp; curses</span><span class="tr">Güç ve ceza baloncukları</span></li>
             <li><span class="en">Plays offline</span><span class="tr">İnternetsiz oynanır</span></li>
           </ul>
+          <a class="store" href="https://play.google.com/store/apps/details?id=com.arpeverstudios.loomspire" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.6v18.8c0 .5.5.8.9.6L21 12.9c.5-.3.5-1 0-1.3L4.9 2c-.4-.2-.9.1-.9.6z" fill="#34C778"/><path d="M4 2.6 14 12 4 21.4z" fill="#3A8DFF"/><path d="M14 12l3.3-3.2L21 11c.5.3.5 1 0 1.3l-3.7 2z" fill="#FFC83D"/><path d="M4 21.4 14 12l3.3 3.3-12.4 6.7c-.3.1-.6.1-.9-.6z" fill="#FF5A4F"/></svg><span class="en">Get it on Google Play</span><span class="tr">Google Play'den indir</span></a>
           <ol class="timeline" aria-label="Release">
-            <li class="done"><span><b><span class="en">12 Oct 2026</span><span class="tr">12 Ekim 2026</span></b> · <span class="en">Closed testing started on Google Play</span><span class="tr">Google Play'de kapalı test başladı</span></span></li>
-            <li class="next"><span><b><span class="en">26 Oct 2026</span><span class="tr">26 Ekim 2026</span></b> · <span class="en">Move to public release begins</span><span class="tr">Herkese açık yayına geçiş başlıyor</span></span></li>
+            <li class="done"><span><b><span class="en">12 Oct 2026</span><span class="tr">12 Ekim 2026</span></b> · <span class="en">Closed testing started</span><span class="tr">Kapalı test başladı</span></span></li>
+            <li class="done"><span><b><span class="en">Now</span><span class="tr">Şimdi</span></b> · <span class="en">Out on Google Play</span><span class="tr">Google Play'de yayında</span></span></li>
             <li><span><span class="en">App Store to follow</span><span class="tr">Ardından App Store</span></span></li>
           </ol>
           <p class="platforms">English · Türkçe</p>
@@ -402,8 +429,8 @@
           </ul>
           <ol class="timeline" aria-label="Release">
             <li class="done"><span><b><span class="en">20 Oct 2026</span><span class="tr">20 Ekim 2026</span></b> · <span class="en">Closed testing started on Google Play</span><span class="tr">Google Play'de kapalı test başladı</span></span></li>
-            <li class="next"><span><b><span class="en">Nov 2026</span><span class="tr">Kasım 2026</span></b> · <span class="en">Move to public release</span><span class="tr">Herkese açık yayına geçiş</span></span></li>
-            <li><span><span class="en">App Store to follow</span><span class="tr">Ardından App Store</span></span></li>
+            <li class="next"><span><b><span class="en">4 Nov 2026</span><span class="tr">4 Kasım 2026</span></b> · <span class="en">Closed testing wraps up</span><span class="tr">Kapalı test tamamlanıyor</span></span></li>
+            <li><span><span class="en">Then: public release on Google Play, App Store later</span><span class="tr">Ardından Google Play'de herkese açık yayın, sonra App Store</span></span></li>
           </ol>
           <p class="platforms">English · Türkçe</p>
         </div>
@@ -430,7 +457,42 @@
       <div class="soon-head reveal">
         <h3><span class="en">Coming soon</span><span class="tr">Yakında</span></h3>
       </div>
-      <div class="soon one">
+        <article class="feature vr reveal" id="voltrift">
+        <div class="feature-body">
+          <div class="game-head">
+            <div class="icon">
+              <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,#16233a,#0a0f17 72%)"></div>
+              <img src="img/voltrift-icon.png" alt="" onerror="this.remove()">
+            </div>
+            <div>
+              <h3>Voltrift</h3>
+              <p><span class="en">Energy blast arena</span><span class="tr">Enerji patlaması arena oyunu</span></p>
+            </div>
+          </div>
+          <span class="status dev"><span class="en">In development · up next</span><span class="tr">Geliştiriliyor · sıradaki oyunumuz</span></span>
+          <p class="desc">
+            <span class="en">Drop energy charges around the arena and chain the blasts. Smash crates, clear out the bugs and find the hidden exit. Pick a new perk after every level, and face a boss every fifth.</span>
+            <span class="tr">Arenaya enerji şarjları bırak, patlamaları zincirle. Sandıkları parçala, böcekleri temizle, gizli geçidi bul. Her bölümün sonunda yeni bir yetenek seç, her beş bölümde bir patronla yüzleş.</span>
+          </p>
+          <ul class="chips">
+            <li><span class="en">6 worlds</span><span class="tr">6 dünya</span></li>
+            <li><span class="en">Perk cards</span><span class="tr">Yetenek kartları</span></li>
+            <li><span class="en">Boss levels</span><span class="tr">Patron bölümleri</span></li>
+            <li><span class="en">Daily challenge</span><span class="tr">Günlük meydan okuma</span></li>
+            <li><span class="en">Plays offline</span><span class="tr">İnternetsiz oynanır</span></li>
+          </ul>
+          <p class="platforms">English · Türkçe</p>
+        </div>
+        <div class="feature-art">
+          <div class="phone land float">
+            <div class="shot vr-shot"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="c"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="e"></i><i class="c"></i><i class="f"></i><i class="f"></i><i class="c"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="w"></i><i class="f"></i><i class="w"></i><i class="b"></i><i class="w"></i><i class="c"></i><i class="w"></i><i class="f"></i><i class="w"></i><i class="f"></i><i class="w"></i><i class="f"></i><i class="w"></i><i class="f"></i><i class="c"></i><i class="f"></i><i class="f"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="c"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="c"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="w"></i><i class="f"></i><i class="w"></i><i class="b"></i><i class="w"></i><i class="f"></i><i class="w"></i><i class="f"></i><i class="w"></i><i class="f"></i><i class="w"></i><i class="c"></i><i class="w"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="c"></i><i class="f"></i><i class="p"></i><i class="k"></i><i class="f"></i><i class="c"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="e"></i><i class="f"></i><i class="c"></i><i class="f"></i><i class="w"></i><i class="f"></i><i class="w"></i><i class="f"></i><i class="w"></i><i class="f"></i><i class="w"></i><i class="f"></i><i class="w"></i><i class="c"></i><i class="w"></i><i class="f"></i><i class="w"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="c"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="c"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="c"></i><i class="e"></i><i class="f"></i><i class="c"></i><i class="f"></i>
+              <div class="vr-hud"><span>♥ 3</span><span class="x"><span class="en">CHAIN x4 +450</span><span class="tr">ZİNCİR x4 +450</span></span></div>
+              <img src="img/voltrift-shot.png" alt="Voltrift" onerror="this.remove()">
+            </div>
+          </div>
+        </div>
+      </article>
+      <div class="soon one" style="margin-top:16px">
 
         <article class="card reveal" id="pipaloo">
           <div class="bg" style="background:radial-gradient(120% 90% at 100% 0%,rgba(255,170,110,.24),transparent 60%)"></div>
@@ -471,9 +533,9 @@
           <span class="tr">Her oyun telefonunuzun dilinde, Türkçe ya da İngilizce açılır ve aynı birkaç kurala uyar.</span>
         </p>
         <div class="meta-row reveal">
-          <div><b>2</b><span class="en">games in testing</span><span class="tr">oyun testte</span></div>
-          <div><b>1</b><span class="en">game on the way</span><span class="tr">oyun yolda</span></div>
-          <div><b>EN · TR</b><span class="en">in every game</span><span class="tr">her oyunda</span></div>
+          <div><b>1</b><span class="en">game out now</span><span class="tr">oyun yayında</span></div>
+          <div><b>1</b><span class="en">game in testing</span><span class="tr">oyun testte</span></div>
+          <div><b>2</b><span class="en">games on the way</span><span class="tr">oyun yolda</span></div>
         </div>
       </div>
 
