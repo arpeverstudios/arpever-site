@@ -6,9 +6,10 @@
     Her metin iki kez yazılır: class="en" ve class="tr".
   - Oyun görselleri: img/ klasörüne aşağıdaki adlarla PNG konursa kartta otomatik görünür,
     dosya yoksa koddan çizilen yer tutucu kalır:
-      img/loomspire-icon.png (kare ikon, 512×512)   img/loomspire-shot.png (dikey ekran görüntüsü, 1080×1920)
-      img/toppleton-icon.png                        img/toppleton-shot.png (dikey ekran görüntüsü)
-      img/voltrift-icon.png                         img/voltrift-shot.png (YATAY ekran görüntüsü, 1920×1080)
+      img/<oyun>-icon.png (kare ikon, 512×512)
+      img/<oyun>-shot.png (EN) + img/<oyun>-shot-tr.png (TR) — sayfa diline göre biri görünür.
+        Dikey oyunlar (loomspire, toppleton) 720×1565, yatay oyun (voltrift) 1280×720.
+        Kaynak: oyunun App Store / Play mağaza görüntüleri (2026-11-09).
       img/pipaloo-icon.png
   - Yeni oyun: "games" bölümüne bir kart kopyalayın; durumu .status ile yazın.
   - Stüdyo bölümündeki sayılar (2 yayında / 1 testte / 1 yolda — 2026-11-08) oyun durumları değişince elle güncellenir.
@@ -394,7 +395,7 @@
               <div class="ls-plat" style="left:40%;width:44%;bottom:51%"></div>
               <div class="ls-plat" style="left:18%;width:34%;bottom:65%"></div>
               <div class="ls-hero" style="left:30%;bottom:71%"></div>
-              <img src="img/loomspire-shot.png" alt="LoomSpire" onerror="this.remove()">
+              <img class="en" src="img/loomspire-shot.png" alt="LoomSpire" loading="lazy" onerror="this.remove()"><img class="tr" src="img/loomspire-shot-tr.png" alt="LoomSpire" loading="lazy" onerror="this.remove()">
             </div>
           </div>
         </div>
@@ -448,7 +449,7 @@
               <div class="tp-b" style="left:30%;width:40%;bottom:36%;background:#FF7A5C"></div>
               <div class="tp-b" style="left:33%;width:37%;bottom:42%;background:#2B2A33"></div>
               <div class="tp-b tp-drop" style="left:46%;width:37%;bottom:56%;background:#FF7A5C"></div>
-              <img src="img/toppleton-shot.png" alt="Toppleton" onerror="this.remove()">
+              <img class="en" src="img/toppleton-shot.png" alt="Toppleton" loading="lazy" onerror="this.remove()"><img class="tr" src="img/toppleton-shot-tr.png" alt="Toppleton" loading="lazy" onerror="this.remove()">
             </div>
           </div>
         </div>
@@ -493,7 +494,7 @@
           <div class="phone land float">
             <div class="shot vr-shot"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="c"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="e"></i><i class="c"></i><i class="f"></i><i class="f"></i><i class="c"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="w"></i><i class="f"></i><i class="w"></i><i class="b"></i><i class="w"></i><i class="c"></i><i class="w"></i><i class="f"></i><i class="w"></i><i class="f"></i><i class="w"></i><i class="f"></i><i class="w"></i><i class="f"></i><i class="c"></i><i class="f"></i><i class="f"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="c"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="c"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="w"></i><i class="f"></i><i class="w"></i><i class="b"></i><i class="w"></i><i class="f"></i><i class="w"></i><i class="f"></i><i class="w"></i><i class="f"></i><i class="w"></i><i class="c"></i><i class="w"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="c"></i><i class="f"></i><i class="p"></i><i class="k"></i><i class="f"></i><i class="c"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="e"></i><i class="f"></i><i class="c"></i><i class="f"></i><i class="w"></i><i class="f"></i><i class="w"></i><i class="f"></i><i class="w"></i><i class="f"></i><i class="w"></i><i class="f"></i><i class="w"></i><i class="c"></i><i class="w"></i><i class="f"></i><i class="w"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="c"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="c"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="c"></i><i class="e"></i><i class="f"></i><i class="c"></i><i class="f"></i>
               <div class="vr-hud"><span>♥ 3</span><span class="x"><span class="en">CHAIN x4 +450</span><span class="tr">ZİNCİR x4 +450</span></span></div>
-              <img src="img/voltrift-shot.png" alt="Voltrift" onerror="this.remove()">
+              <img class="en" src="img/voltrift-shot.png" alt="Voltrift" loading="lazy" onerror="this.remove()"><img class="tr" src="img/voltrift-shot-tr.png" alt="Voltrift" loading="lazy" onerror="this.remove()">
             </div>
           </div>
         </div>
